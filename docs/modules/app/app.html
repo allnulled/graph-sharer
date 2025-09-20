@@ -1,0 +1,53 @@
+<div class="app app_component position_relative">
+    <div class="panel_principal">
+        <div class="panel_de_botones">
+            <div class="flex_row centered pad_top_1 pad_right_1">
+                <div class="flex_100 pad_left_1" style="color: white;">Graph sharer</div>
+                <div class="flex_1 pad_left_1">
+                    <button class="" v-on:click="exportAsLink">Exportar</button>
+                </div>
+                <template v-if="selectedPanel === 'edicion'">
+                    <div class="flex_1 pad_left_1">
+                        <button class="" v-on:click="visualize">Compilar</button>
+                    </div>
+                </template>
+                <template v-else>
+                    <div class="flex_1 pad_left_1">
+                        <button class="" v-on:click="() => selectPanel('edicion')">Editar</button>
+                    </div>
+                </template>
+            </div>
+        </div>
+        <div class="panel_de_edicion"
+            v-show="selectedPanel === 'edicion'">
+            <div class="pad_1">
+                <textarea
+                    class="width_100"
+                    style="height: 250px;"
+                    v-model="source"
+                    spellcheck="false"
+                    :placeholder="placeholder"
+                    ref="editorDeTexto"></textarea>
+            </div>
+        </div>
+        <div class="panel_de_visualizacion"
+            v-show="selectedPanel === 'visualizacion'">
+            <div class="marco_de_visualizacion_container">
+                <div class="marco_de_visualizacion">
+                    <div ref="graphRenderer" id="graph_renderer" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--lsw-home-top-panel ref="desktop" />
+    <lsw-desktop-bottom-panel /-->
+    <div>
+        <!--lsw-console-hooker />
+        <lsw-windows-viewer /-->
+        <lsw-debugger />
+        <lsw-toasts />
+    </div>
+    <!--lsw-home-bottom-panel />
+    <lsw-clockwatcher /-->
+    <div style="min-height: 100px;"></div>
+</div>
