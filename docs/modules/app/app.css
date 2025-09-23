@@ -1059,3 +1059,8 @@ pre.codeblock {
     color: black;
     padding: 8px;
 }
+.editor_en_cuestion {
+    font-family: monospace;
+    font-size: 11px;
+    background-color: white;
+}

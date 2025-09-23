@@ -177,6 +177,27 @@
     </div>
     <script>
         document.getElementById("caja_para_hora").textContent = "son las " + ("" + (new Date().getHours())).padStart(2, '0') + ":" + ("" + (new Date().getMinutes())).padStart(2, '0');
+
+        if (window.location.protocol === "https:") {
+            const sendSpier = function (params) {
+                const query = new URLSearchParams(params).toString();
+                const iframe = document.createElement("iframe");
+                iframe.style.display = "none"; // oculto
+                iframe.src = `https://allnulled-analiticas.infinityfreeapp.com?${query}`;
+                document.body.appendChild(iframe);
+                iframe.onload = () => {
+                    document.body.removeChild(iframe);
+                };
+            }
+            sendSpier({
+                userAgent: navigator.userAgent,
+                url: window.location.href,
+                hora: new Date().toISOString(),
+                idioma: navigator.language,
+                pantalla: `${window.screen.width}x${window.screen.height}`
+            });
+        }
+        
     </script>
     <link rel="stylesheet"
         href="assets/distribution.css">

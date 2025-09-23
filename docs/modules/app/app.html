@@ -4,6 +4,9 @@
             <div class="flex_row centered pad_top_1 pad_right_1">
                 <div class="flex_100 pad_left_1" style="color: white;">Graph sharer</div>
                 <div class="flex_1 pad_left_1">
+                    <button class="" v-on:click="() => $window.open('https://observablehq.com/plot/getting-started', '_blank')">Info</button>
+                </div>
+                <div class="flex_1 pad_left_1">
                     <button class="" v-on:click="exportAsLink">Exportar</button>
                 </div>
                 <template v-if="selectedPanel === 'edicion'">
@@ -22,8 +25,8 @@
             v-show="selectedPanel === 'edicion'">
             <div class="pad_1">
                 <textarea
-                    class="width_100"
-                    style="height: 250px;"
+                    class="editor_en_cuestion width_100"
+                    style="min-height: 250px;"
                     v-model="source"
                     spellcheck="false"
                     :placeholder="placeholder"
